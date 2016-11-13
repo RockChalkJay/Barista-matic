@@ -1,7 +1,8 @@
 package com.trustwave.drink;
 
 
-import com.trustwave.ingredients.Ingredient;
+import com.trustwave.ingredients.Cream;
+import com.trustwave.ingredients.Sugar;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -9,10 +10,12 @@ import java.util.ArrayList;
 /**
  * Created by jharris on 11/10/16.
  */
-public class Coffee implements Drink {
+public class Coffee extends Drink {
 
-    @Override
-    public ArrayList< Pair<Ingredient,Integer> > getIngredients() {
-        return null;
+    public Coffee() {
+        name = "Coffee";
+        ingredients.add(new Pair(new com.trustwave.ingredients.Coffee(), new Integer(3)));
+        ingredients.add(new Pair(new Sugar(), new Integer(1)));
+        ingredients.add(new Pair(new Cream(), new Integer(1)));
     }
 }

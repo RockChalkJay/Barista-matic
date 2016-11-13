@@ -1,5 +1,7 @@
 package com.trustwave.service;
 
+import com.trustwave.ingredients.Ingredient;
+import com.trustwave.ingredients.Sugar;
 import org.junit.Test;
 
 /**
@@ -11,7 +13,14 @@ public class InventoryServiceTest {
     public void testRestock() {}
 
     @Test
-    public void testGetandDecrementIngrediant() {}
+    public void testUseIngrediant() {
+        InventoryService is = new InventoryService();
+        Sugar sugar = new Sugar();
+        assert (is.getAmountOfIngredient(sugar) == 10);
+        assert (is.useIngredient(sugar, 3) == 7);
+        assert (is.getAmountOfIngredient(sugar) == 7);
+        System.out.println(is.toString());
+    }
 
     @Test
     public void testAddIngrediant() {}

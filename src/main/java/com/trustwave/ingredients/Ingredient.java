@@ -5,4 +5,7 @@ package com.trustwave.ingredients;
  */
 public interface Ingredient {
 
+    public String getName();
+
+    public double getCost();
 }
