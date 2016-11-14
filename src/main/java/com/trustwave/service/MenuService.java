@@ -13,6 +13,10 @@ public interface MenuService {
 
     public void setInventoryService(InventoryService inventoryService);
 
+    public void addDrink(Drink drink);
+
+    public void removeDrink(Drink drink);
+
     public ArrayList<Drink> getDrinks();
 
     public void setDrinks(ArrayList<Drink> drinks);

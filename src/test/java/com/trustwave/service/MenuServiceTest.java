@@ -2,13 +2,15 @@ package com.trustwave.service;
 
 import com.trustwave.drink.*;
 
-import com.trustwave.ingredients.Ingredient;
-import com.trustwave.ingredients.IngredientImpl;
+import com.trustwave.drink.Coffee;
+import com.trustwave.ingredients.*;
 import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static com.trustwave.service.InventoryService.MAX_CAPACITY;
 
 /**
  * Created by jharris on 11/10/16.
@@ -22,6 +24,30 @@ public class MenuServiceTest {
     public void initialize() {
         inventoryService = new InventoryServiceImpl();
         menuService = new MenuServiceImpl(inventoryService);
+    }
+
+    @Test
+    public void testAddDrink() {
+        ArrayList<Pair<Ingredient, Integer>> ingredients = new ArrayList<>();
+        ingredients.add(new Pair(new com.trustwave.ingredients.Coffee(), new Integer(MAX_CAPACITY)));
+        menuService.addDrink(new DrinkImpl("Just Black", ingredients));
+        for(int i=0; i < menuService.getDrinks().size(); i++) {
+            if (menuService.getDrinks().get(i).getName().equals("Just Black")) {
+                return;
+            }
+        }
+
+        assert (false);
+    }
+
+    @Test
+    public void testRemoveDrink() {
+        menuService.removeDrink(new CaffeMocha());
+        for(int i=0; i < menuService.getDrinks().size(); i++) {
+            if (menuService.getDrinks().get(i).getName().equals("Caffe Mocha")) {
+                assert (false);
+            }
+        }
     }
 
     @Test

@@ -8,30 +8,42 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by jharris on 11/10/16.
+ * Created by jharris on 11/MAX_CAPACITY/16.
  */
 public class InventoryServiceImpl implements InventoryService {
+
 
     public HashMap<String, Integer> stock = new HashMap<>();
 
     public InventoryServiceImpl() {
-        stock.put(new Cocoa().getName(), new Integer(10));
-        stock.put(new Coffee().getName(), new Integer(10));
-        stock.put(new DecafCoffee().getName(), new Integer(10));
-        stock.put(new Espresso().getName(), new Integer(10));
-        stock.put(new FoamedMilk().getName(), new Integer(10));
-        stock.put(new SteamedMilk().getName(), new Integer(10));
-        stock.put(new Sugar().getName(), new Integer(10));
-        stock.put(new WhippedCream().getName(), new Integer(10));
-        stock.put(new Cream().getName(), new Integer(10));
+        stock.put(new Cocoa().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new Coffee().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new DecafCoffee().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new Espresso().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new FoamedMilk().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new SteamedMilk().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new Sugar().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new WhippedCream().getName(), new Integer(MAX_CAPACITY));
+        stock.put(new Cream().getName(), new Integer(MAX_CAPACITY));
     }
 
     public InventoryServiceImpl(List<Ingredient> ingredients) {
         for (Ingredient ingredient:ingredients) {
-            stock.put(ingredient.getName(), new Integer(10));
+            stock.put(ingredient.getName(), new Integer(MAX_CAPACITY));
         }
     }
 
+    @Override
+    public void addIngredient(Ingredient ingredient) {
+        stock.put(ingredient.getName(), MAX_CAPACITY);
+    }
+
+    @Override
+    public void removeIngredient(Ingredient ingredient) {
+        stock.remove(ingredient.getName());
+    }
+
+    //TODO - add comment
     @Override
     public int getAmountOfIngredient(Ingredient ingredient) {
         if (ingredient == null) {
@@ -62,7 +74,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public void restock() {
         for(String ingredient : stock.keySet()) {
-            stock.put(ingredient, new Integer(10));
+            stock.put(ingredient, new Integer(MAX_CAPACITY));
         }
     }
 

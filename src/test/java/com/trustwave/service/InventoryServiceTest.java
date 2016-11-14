@@ -6,16 +6,35 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static com.trustwave.service.InventoryService.MAX_CAPACITY;
+
 /**
- * Created by jharris on 11/10/16.
+ * Created by jharris on 11/MAX_CAPACITY/16.
  */
 public class InventoryServiceTest {
 
     @Test
+    public void testAddIngredient() {
+        InventoryService is = new InventoryServiceImpl();
+        Ingredient ingredient = new IngredientImpl("Rat Posion", 2.99);
+        is.addIngredient(ingredient);
+        assert (is.getAmountOfIngredient(ingredient) == MAX_CAPACITY);
+    }
+
+    @Test
+    public void testRemoveIngredient() {
+        InventoryService is = new InventoryServiceImpl();
+        Ingredient ingredient = new IngredientImpl("Rat Posion", 2.99);
+        is.addIngredient(ingredient);
+        is.removeIngredient(ingredient);
+        assert (is.getAmountOfIngredient(ingredient) == -1);
+    }
+    
+    @Test
     public void testUseIngrediant() {
         InventoryService is = new InventoryServiceImpl();
         Sugar sugar = new Sugar();
-        assert (is.getAmountOfIngredient(sugar) == 10);
+        assert (is.getAmountOfIngredient(sugar) == MAX_CAPACITY);
         assert (is.useIngredient(sugar, 3) == 7);
         assert (is.getAmountOfIngredient(sugar) == 7);
     }
@@ -25,10 +44,10 @@ public class InventoryServiceTest {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new IngredientImpl("Egg nog", 1.25));
         InventoryService is = new InventoryServiceImpl(ingredients);
-        assert ((is.getAmountOfIngredient(ingredients.get(0)) == 10));
+        assert ((is.getAmountOfIngredient(ingredients.get(0)) == MAX_CAPACITY));
         assert (is.useIngredient(ingredients.get(0), 11) == -1);
         assert (is.useIngredient(ingredients.get(0), -42) == -1);
-        assert (is.useIngredient(ingredients.get(0), 10) == 0);
+        assert (is.useIngredient(ingredients.get(0), MAX_CAPACITY) == 0);
     }
 
     @Test
@@ -36,8 +55,8 @@ public class InventoryServiceTest {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new IngredientImpl("Nutmeg", .25));
         InventoryService is = new InventoryServiceImpl(ingredients);
-        assert ((is.getAmountOfIngredient(ingredients.get(0)) == 10));
-        assert (is.useIngredient(ingredients.get(0), 10) == 0);
+        assert ((is.getAmountOfIngredient(ingredients.get(0)) == MAX_CAPACITY));
+        assert (is.useIngredient(ingredients.get(0), MAX_CAPACITY) == 0);
         assert (is.useIngredient(ingredients.get(0), 1) == -1);;
     }
 
@@ -60,27 +79,27 @@ public class InventoryServiceTest {
         WhippedCream wc = new WhippedCream();
         Cream cr = new Cream();
 
-        is.useIngredient(co, 10);
-        is.useIngredient(cof, 10);
-        is.useIngredient(def, 10);
-        is.useIngredient(es, 10);
-        is.useIngredient(fm, 10);
-        is.useIngredient(sm, 10);
-        is.useIngredient(sug, 10);
-        is.useIngredient(wc, 10);
-        is.useIngredient(cr, 10);
+        is.useIngredient(co, MAX_CAPACITY);
+        is.useIngredient(cof, MAX_CAPACITY);
+        is.useIngredient(def, MAX_CAPACITY);
+        is.useIngredient(es, MAX_CAPACITY);
+        is.useIngredient(fm, MAX_CAPACITY);
+        is.useIngredient(sm, MAX_CAPACITY);
+        is.useIngredient(sug, MAX_CAPACITY);
+        is.useIngredient(wc, MAX_CAPACITY);
+        is.useIngredient(cr, MAX_CAPACITY);
 
         is.restock();
 
-        assert (is.getAmountOfIngredient(co) == 10);
-        assert (is.getAmountOfIngredient(cof) == 10);
-        assert (is.getAmountOfIngredient(def) == 10);
-        assert (is.getAmountOfIngredient(es) == 10);
-        assert (is.getAmountOfIngredient(fm) == 10);
-        assert (is.getAmountOfIngredient(sm) == 10);
-        assert (is.getAmountOfIngredient(sug) == 10);
-        assert (is.getAmountOfIngredient(wc) == 10);
-        assert (is.getAmountOfIngredient(cr) == 10);
+        assert (is.getAmountOfIngredient(co) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(cof) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(def) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(es) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(fm) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(sm) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(sug) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(wc) == MAX_CAPACITY);
+        assert (is.getAmountOfIngredient(cr) == MAX_CAPACITY);
     }
 
 }

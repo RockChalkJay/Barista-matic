@@ -19,6 +19,8 @@ public class Baristamatic {
 
         Scanner scanner = new Scanner(System.in);
 
+        outputInventoryAndMenu(inventoryService, menuService);
+
         while (true) {
 
             String input = scanner.nextLine();
@@ -26,7 +28,6 @@ public class Baristamatic {
             System.out.println();
 
             if ("q".equals(input.toLowerCase())) {
-                outputInventoryAndMenu(inventoryService, menuService);
                 System.exit(0);
             } else if ("r".equals(input.toLowerCase())) {
                 inventoryService.restock();

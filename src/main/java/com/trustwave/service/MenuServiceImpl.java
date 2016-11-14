@@ -55,12 +55,32 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
+    public void addDrink(Drink drink) {
+        drinks.add(drink);
+        Collections.sort(drinks, (drink1, drink2) ->
+                drink1.getName().compareToIgnoreCase(drink2.getName()));
+    }
+
+    @Override
+    public void removeDrink(Drink drink) {
+        for (int i=0; i < drinks.size(); i++) {
+            if(drinks.get(i).getName() == drink.getName()) {
+                drinks.remove(i);
+            }
+        }
+        Collections.sort(drinks, (drink1, drink2) ->
+                drink1.getName().compareToIgnoreCase(drink2.getName()));
+    }
+
+    @Override
     public ArrayList<Drink> getDrinks() {
         return drinks;
     }
 
     @Override
     public void setDrinks(ArrayList<Drink> drinks) {
+        Collections.sort(drinks, (drink1, drink2) ->
+                drink1.getName().compareToIgnoreCase(drink2.getName()));
         this.drinks = drinks;
     }
 
