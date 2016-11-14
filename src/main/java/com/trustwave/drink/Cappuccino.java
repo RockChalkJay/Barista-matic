@@ -1,9 +1,9 @@
 package com.trustwave.drink;
 
-import com.trustwave.ingredients.*;
+import com.trustwave.ingredients.Espresso;
+import com.trustwave.ingredients.FoamedMilk;
+import com.trustwave.ingredients.SteamedMilk;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
 
 /**
  * Created by jharris on 11/10/16.

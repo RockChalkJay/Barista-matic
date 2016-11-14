@@ -1,8 +1,6 @@
 package com.trustwave.service;
 
-import com.trustwave.ingredients.*;
-
-import java.util.*;
+import com.trustwave.ingredients.Ingredient;
 
 /**
  * Created by jharris on 11/10/16.

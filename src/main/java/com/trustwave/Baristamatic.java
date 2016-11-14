@@ -1,12 +1,10 @@
 package com.trustwave;
 
-import com.trustwave.drink.Drink;
 import com.trustwave.service.InventoryService;
 import com.trustwave.service.InventoryServiceImpl;
 import com.trustwave.service.MenuService;
 import com.trustwave.service.MenuServiceImpl;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

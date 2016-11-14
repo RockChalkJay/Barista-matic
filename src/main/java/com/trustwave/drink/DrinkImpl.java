@@ -1,12 +1,11 @@
 package com.trustwave.drink;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
-import java.util.ArrayList;
+import com.trustwave.ingredients.Ingredient;
 import javafx.util.Pair;
 
-import com.trustwave.ingredients.Ingredient;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 
 
 /**
@@ -47,12 +46,12 @@ public class DrinkImpl implements Drink {
             return 0;
         }
 
-        //TODO -- explain double multipition issue
         double result = 0;
         for (Pair<Ingredient, Integer> ingredientCount : ingredients) {
             result += ingredientCount.getKey().getCost() * ingredientCount.getValue();
         }
 
+        //We have to use BigDecimal here because double multiplication can do funny things
         BigDecimal r = new BigDecimal(result);
         r = r.setScale(2, RoundingMode.HALF_UP);
         return r.doubleValue();

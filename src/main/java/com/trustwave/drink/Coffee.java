@@ -5,8 +5,6 @@ import com.trustwave.ingredients.Cream;
 import com.trustwave.ingredients.Sugar;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-
 /**
  * Created by jharris on 11/10/16.
  */
