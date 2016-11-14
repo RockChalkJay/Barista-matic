@@ -1,9 +1,10 @@
 package com.trustwave.service;
 
-import com.trustwave.drink.Drink;
-import com.trustwave.drink.CaffeAmericano;
-import com.trustwave.drink.CaffeMocha;
+import com.trustwave.drink.*;
 
+import com.trustwave.ingredients.Ingredient;
+import com.trustwave.ingredients.IngredientImpl;
+import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,6 +49,14 @@ public class MenuServiceTest {
         assert (menuService.orderDrink(ca));
         assert (menuService.orderDrink(ca));
         assert (!menuService.isDrinkInStock(ca));
+
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new IngredientImpl("Whiskey", 5));
+        InventoryService is = new InventoryServiceImpl(ingredients);
+        ArrayList<Drink> drinks = new ArrayList<>();
+        drinks.add(new Coffee());
+        menuService = new MenuServiceImpl(is, drinks);
+        assert (!menuService.isDrinkInStock(new Coffee()));
     }
 
     @Test
@@ -57,6 +66,11 @@ public class MenuServiceTest {
         assert (menuService.orderDrink(ca));
         assert (menuService.orderDrink(ca));
         assert (!menuService.orderDrink(ca));
+
+        //order an invalid drink
+        ArrayList<Pair<Ingredient, Integer>> ingredients = new ArrayList<>();
+        ingredients.add(new Pair(new IngredientImpl("Some root", .66), new Integer(2)));
+        assert (!menuService.orderDrink(new DrinkImpl("Sarsaparilla", ingredients)));
     }
 
     @Test
@@ -65,6 +79,9 @@ public class MenuServiceTest {
         assert (menuService.orderDrink(1));
         assert (menuService.orderDrink(1));
         assert (!menuService.orderDrink(1));
+
+        //order an invalid drink
+        assert (!menuService.orderDrink(42));
     }
 
 }

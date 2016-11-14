@@ -34,8 +34,13 @@ public class InventoryServiceImpl implements InventoryService {
         if (ingredient == null) {
             return -1;
         }
+        Integer amount = (Integer)stock.get(ingredient.getName());
 
-        return ((Integer)stock.get(ingredient.getName()).intValue());
+        if(amount == null) {
+            return -1;
+        }
+
+        return amount.intValue();
     }
 
     @Override
