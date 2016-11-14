@@ -7,7 +7,7 @@ import javafx.util.Pair;
 /**
  * Created by jharris on 11/10/16.
  */
-public class DecafCoffee extends Drink {
+public class DecafCoffee extends DrinkImpl {
 
     public DecafCoffee() {
         name = "Decaf Coffee";

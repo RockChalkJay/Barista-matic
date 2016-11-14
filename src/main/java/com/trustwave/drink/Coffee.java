@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by jharris on 11/10/16.
  */
-public class Coffee extends Drink {
+public class Coffee extends DrinkImpl {
 
     public Coffee() {
         name = "Coffee";

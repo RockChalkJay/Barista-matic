@@ -2,7 +2,9 @@ package com.trustwave;
 
 import com.trustwave.drink.Drink;
 import com.trustwave.service.InventoryService;
+import com.trustwave.service.InventoryServiceImpl;
 import com.trustwave.service.MenuService;
+import com.trustwave.service.MenuServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,8 +16,8 @@ public class Baristamatic {
 
     public static void main(String[] args) {
 
-        InventoryService inventoryService = new InventoryService();
-        MenuService menuService = new MenuService(inventoryService);
+        InventoryService inventoryService = new InventoryServiceImpl();
+        MenuService menuService = new MenuServiceImpl(inventoryService);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,15 +42,15 @@ public class Baristamatic {
                     if (0 < orderNum && orderNum <= menuService.getDrinks().size()) {
                         if (menuService.isDrinkInStock(orderNum)) {
                             menuService.orderDrink(orderNum);
-                            System.out.println("Dispensing: " + menuService.getDrinks().get(orderNum-1).getName());
+                            System.out.println("Dispensing: " + menuService.getDrinks().get(orderNum-1).getName() + "\n");
                         } else {
-                            System.out.println("Out of stock: " + menuService.getDrinks().get(orderNum - 1).getName());
+                            System.out.println("Out of stock: " + menuService.getDrinks().get(orderNum - 1).getName() + "\n");
                         }
                     } else {
-                        System.out.println("Invalid selection: " + input);
+                        System.out.println("Invalid selection: " + input + "\n");
                     }
                 } catch(NumberFormatException nfe) {
-                    System.out.println("Invalid selection: " + input);
+                    System.out.println("Invalid selection: " + input + "\n");
                 }
                 finally {
                     outputInventoryAndMenu(inventoryService, menuService);
@@ -58,9 +60,7 @@ public class Baristamatic {
     }
 
     private static void outputInventoryAndMenu(InventoryService inventoryService, MenuService menuService) {
-        System.out.println();
         System.out.println(inventoryService.toString());
-        System.out.println();
         System.out.println(menuService.toString());
     }
 }

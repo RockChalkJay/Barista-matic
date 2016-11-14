@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by jharris on 11/10/16.
  */
-public class CaffeMocha extends Drink {
+public class CaffeMocha extends DrinkImpl {
 
     public CaffeMocha() {
         name = "Caffe Mocha";

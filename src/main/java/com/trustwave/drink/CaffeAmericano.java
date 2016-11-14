@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by jharris on 11/10/16.
  */
-public class CaffeAmericano extends Drink {
+public class CaffeAmericano extends DrinkImpl {
 
     public CaffeAmericano() {
         name = "Caffe Americano";

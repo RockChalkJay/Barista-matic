@@ -7,7 +7,15 @@ import org.junit.Test;
  */
 public class IngredientTest {
 
-    //----test cost for generic and possibly all
     @Test
-    public void testCost() {}
+    public void testGetName() {
+        Ingredient ingredient = new IngredientImpl("Coke", .99);
+        assert (ingredient.getName().equals("Coke"));
+    }
+
+    @Test
+    public void testGetCost() {
+        Ingredient ingredient = new IngredientImpl("Coke", .99);
+        assert (ingredient.getCost() == .99);
+    }
 }
