@@ -40,7 +40,7 @@ into MenuService as a dependency giving a lose coupling between drinks and
 the management of their ingredients. This creates a service that can service 
 any number of drinks with any number of ingredients.
 
-**Note**
+**Note**  
 I was unclear if the program should display the users command along with
 the program's output. In this case, I did display the command. I felt that 
 it was beneficial feedback. However, this could be easily changed to hide 

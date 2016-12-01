@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by jharris on 11/MAX_CAPACITY/16.
+ * Created by jharris on 11/10/16.
  */
 public class InventoryServiceImpl implements InventoryService {
 
